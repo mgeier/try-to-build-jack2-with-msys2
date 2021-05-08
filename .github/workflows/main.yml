@@ -23,10 +23,12 @@ jobs:
       - name: waf configure
         working-directory: jack2
         run: |
-          ./waf configure --help
-          echo '#########'
           ./waf configure \
-            --prefix=/mingw64
+            --prefix=/mingw64 \
+            --classic \
+            --autostart=none \
+            --doxygen=no \
+            --alsa=no \
             --firewire=no \
             --iio=no \
             --portaudio=no \
