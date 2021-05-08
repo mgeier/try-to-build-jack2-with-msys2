@@ -27,7 +27,6 @@ jobs:
           echo '#########'
           ./waf configure \
             --prefix=/mingw64
-            --alsa=no \
             --firewire=no \
             --iio=no \
             --portaudio=no \
