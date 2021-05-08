@@ -17,6 +17,7 @@ jobs:
         uses: actions/checkout@v2
         with:
           repository: jackaudio/jack2
+          ref: v1.9.12
           path: jack2
       - name: waf configure
         working-directory: jack2
