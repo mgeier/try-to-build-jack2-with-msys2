@@ -23,9 +23,10 @@ jobs:
       - name: waf configure
         working-directory: jack2
         run: |
+          ./waf configure --help
+          echo '#########'
           ./waf configure \
             --prefix=/mingw64
-            --doxygen=no \
             --alsa=no \
             --firewire=no \
             --iio=no \
