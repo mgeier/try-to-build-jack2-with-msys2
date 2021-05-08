@@ -40,7 +40,6 @@ jobs:
             --readline=no \
             --systemd=no \
             --db=no \
-            --zalsa=no \
             --
       - name: waf build
         working-directory: jack2
