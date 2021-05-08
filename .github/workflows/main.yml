@@ -1,0 +1,51 @@
+name: Build JACK2 with MSYS2
+on: [push, pull_request]
+jobs:
+  build-jack2:
+    runs-on: windows-latest
+    defaults:
+      run:
+        shell: msys2 {0}
+    steps:
+      - name: Install MSYS2
+        uses: msys2/setup-msys2@v2
+        with:
+          release: false
+          install: >-
+            git
+      - name: get JACK2 source code
+        uses: actions/checkout@v2
+        with:
+          repository: jackaudio/jack2
+          path: jack2
+      - name: waf configure
+        working-directory: jack2
+        run: |
+          ./waf configure \
+            --prefix=/mingw64
+            --classic \
+            --autostart=none \
+            --doxygen=no \
+            --alsa=no \
+            --firewire=no \
+            --iio=no \
+            --portaudio=no \
+            --winmme=no \
+            --celt=no \
+            --opus=no \
+            --samplerate=no \
+            --sndfile=no \
+            --readline=no \
+            --systemd=no \
+            --db=no \
+            --zalsa=no \
+            --
+      - name: waf build
+        working-directory: jack2
+        run: |
+          ./waf build
+      - name: waf install
+        working-directory: jack2
+        run: |
+          ./waf install
+
