@@ -3,9 +3,6 @@ on: [push, pull_request]
 jobs:
   build-jack2:
     runs-on: windows-latest
-    env:
-      CC: gcc
-      CXX: g++ 
     defaults:
       run:
         shell: msys2 {0}
@@ -28,6 +25,8 @@ jobs:
         run: |
           ./waf configure \
             --prefix=/mingw64 \
+            --check-c-compiler=gcc \
+            --check-cxx-compiler=g++ \
             --classic \
             --autostart=none \
             --doxygen=no \
